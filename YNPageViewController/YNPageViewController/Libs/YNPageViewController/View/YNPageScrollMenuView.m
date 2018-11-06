@@ -508,7 +508,7 @@
     if (!_addButton) {
         _addButton = [[UIButton alloc] init];
         [_addButton setImage:[UIImage imageNamed:self.configration.addButtonNormalImageName] forState:UIControlStateNormal];
-        [_addButton setImage:[UIImage imageNamed:self.configration.addButtonNormalImageName] forState:UIControlStateHighlighted];
+        [_addButton setImage:[UIImage imageNamed:self.configration.addButtonHightImageName] forState:UIControlStateSelected];
 //        [_addButton setBackgroundImage:[UIImage imageNamed:self.configration.addButtonNormalImageName] forState:UIControlStateNormal];
 //        [_addButton setBackgroundImage:[UIImage imageNamed:self.configration.addButtonHightImageName] forState:UIControlStateHighlighted];
 //        _addButton.layer.shadowColor = [UIColor grayColor].CGColor;
@@ -555,6 +555,7 @@
     if(self.delegate && [self.delegate respondsToSelector:@selector(pagescrollMenuViewAddButtonAction:)]){
         [self.delegate pagescrollMenuViewAddButtonAction:button];
     }
+    button.selected = !button.selected;
 }
 
 @end

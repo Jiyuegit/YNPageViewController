@@ -642,10 +642,12 @@
 }
 /// 初始化子View
 - (void)setupSubViews {
-    
     [self setupHeaderBgView];
-    [self setupPageScrollMenuView];
+    if (!self.scrollMenuView) {
+        [self setupPageScrollMenuView];
+    }
     [self setupPageScrollView];
+    
 }
 
 /// 初始化PageScrollView
