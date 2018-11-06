@@ -121,6 +121,8 @@
 @property (nonatomic, weak) id<YNPageViewControllerDelegate> delegate;
 /// 当前页面index
 @property (nonatomic, assign) NSInteger pageIndex;
+///
+@property (nonatomic, assign) NSInteger reloadPage;
 /// 头部伸缩背景View
 @property (nonatomic, strong) UIView *scaleBackgroundView;
 /// 页面ScrollView

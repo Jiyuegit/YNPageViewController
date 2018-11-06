@@ -583,21 +583,27 @@
 - (void)reloadSuspendHeaderViewFrame {
     if (self.headerView && ([self isSuspensionTopStyle] || [self isSuspensionBottomStyle])) {
         /// 重新初始化headerBgView
-        [self setupHeaderBgView];
+        if (self.reloadPage != 30) {
+            [self setupHeaderBgView];
+        }
         for (int i = 0; i < self.titlesM.count; i++) {
             NSString *title = self.titlesM[i];
             if(self.cacheDictM[[self getKeyWithTitle:title]]) {
                 UIScrollView *scrollView = [self getScrollViewWithPageIndex:i];
-                scrollView.contentInset = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
-                if ([self isSuspensionBottomStyle]) {
-                    /// 设置偏移量
-                    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
+                if (scrollView.contentInset.top != _insetTop) {
+                    scrollView.contentInset = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
+                    if ([self isSuspensionBottomStyle]) {
+                        /// 设置偏移量
+                        scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
+                    }
                 }
             }
         }
         /// 更新布局
-        [self replaceHeaderViewFromTableView];
-        [self replaceHeaderViewFromView];
+        if (self.reloadPage != 30) {
+            [self replaceHeaderViewFromTableView];
+            [self replaceHeaderViewFromView];
+        }
         [self yn_pageScrollViewDidScrollView:self.currentScrollView];
         [self scrollViewDidScroll:self.pageScrollView];
         if (!self.pageScrollView.isDragging) {
