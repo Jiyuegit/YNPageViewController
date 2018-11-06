@@ -80,6 +80,14 @@
     
 }
 
+- (CGFloat)addButtonRight{
+    return _addButtonRight ? _addButtonRight : 0;
+}
+
+- (CGSize)addButtonSize{
+    return _addButtonSize.height > 0 ? _addButtonSize : CGSizeZero;
+}
+
 - (CGFloat)lineHeight {
     
     return _showScrollLine ? _lineHeight : 0;

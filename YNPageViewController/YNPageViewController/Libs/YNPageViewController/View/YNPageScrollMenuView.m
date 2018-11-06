@@ -112,7 +112,11 @@
     [self addSubview:self.scrollView];
     
     if (self.configration.showAddButton) {
-        self.addButton.frame = CGRectMake(self.yn_width - self.yn_height, 0, self.yn_height, self.yn_height);
+        if (self.configration.addButtonSize.height > 0) {
+            self.addButton.frame = CGRectMake(self.yn_width - self.configration.addButtonSize.width - self.configration.addButtonRight, (self.yn_height - self.configration.addButtonSize.height) / 2, self.configration.addButtonSize.width, self.configration.addButtonSize.height);
+        }else{
+            self.addButton.frame = CGRectMake(self.yn_width - self.yn_height, 0, self.yn_height, self.yn_height);
+        }
         [self addSubview:self.addButton];
     }
     

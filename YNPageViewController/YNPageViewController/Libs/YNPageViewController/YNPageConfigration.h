@@ -143,6 +143,11 @@ typedef NS_ENUM(NSInteger, YNPageHeaderViewScaleMode) {
 @property (nonatomic, assign) CGFloat tempTopHeight;
 /** 内容区域 */
 @property (nonatomic, assign) CGFloat contentHeight;
+/** 按钮大小 */
+@property (nonatomic, assign) CGSize addButtonSize;
+/** 按钮右边距 */
+@property (nonatomic, assign) CGFloat addButtonRight;
+
 
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 
