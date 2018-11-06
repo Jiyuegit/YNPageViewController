@@ -32,8 +32,6 @@
 @property (nonatomic, assign) NSInteger lastIndex;
 /// 当前index
 @property (nonatomic, assign) NSInteger currentIndex;
-/// items
-@property (nonatomic, strong) NSMutableArray<UIButton *> *itemsArrayM;
 /// item宽度
 @property (nonatomic, strong) NSMutableArray *itemsWidthArraM;
 
@@ -98,7 +96,9 @@
     [itemButton addTarget:self action:@selector(itemButtonOnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [itemButton sizeToFit];
-    
+    if (self.configration.itemWidth) {
+        itemButton.yn_width = self.configration.itemWidth;
+    }
     [self.itemsWidthArraM addObject:@(itemButton.yn_width)];
     [self.itemsArrayM addObject:itemButton];
     [self.scrollView addSubview:itemButton];
@@ -505,9 +505,9 @@
         _addButton = [[UIButton alloc] init];
         [_addButton setBackgroundImage:[UIImage imageNamed:self.configration.addButtonNormalImageName] forState:UIControlStateNormal];
         [_addButton setBackgroundImage:[UIImage imageNamed:self.configration.addButtonHightImageName] forState:UIControlStateHighlighted];
-        _addButton.layer.shadowColor = [UIColor grayColor].CGColor;
-        _addButton.layer.shadowOffset = CGSizeMake(-1, 0);
-        _addButton.layer.shadowOpacity = 0.5;
+//        _addButton.layer.shadowColor = [UIColor grayColor].CGColor;
+//        _addButton.layer.shadowOffset = CGSizeMake(-1, 0);
+//        _addButton.layer.shadowOpacity = 0.5;
         _addButton.backgroundColor = self.configration.addButtonBackgroundColor;
         [_addButton addTarget:self action:@selector(addButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
